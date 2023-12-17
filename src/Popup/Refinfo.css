@@ -1,0 +1,41 @@
+.Refinfo{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 75%;
+    height: 85%;
+    padding: 50px;
+    border-radius: 25px;
+}
+
+.heading h1{
+    color: #2B2F32;
+}
+.heading p{
+    color: #545F71;
+}
+
+
+.mapdata{
+    display: flex;
+    margin: 100px 0px;
+}
+
+.itemdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+.image{
+    margin: 30px 0px;
+}
+
+.attrib p{
+    color: #545F71;
+    margin: 10px 0px;
+}

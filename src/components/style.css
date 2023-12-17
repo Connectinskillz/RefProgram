@@ -1,0 +1,111 @@
+/* Header Section of the code  */
+.Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.image img{
+    height: 40px;
+}
+
+
+/* banner css */
+.Banner{
+    background-color: white;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+    padding: 50px 30px;
+    box-shadow: 1px 10px 35px #cbc6c63a;
+}
+
+.Banner-ctnt h3{
+    font-size: 3rem;
+    line-height: 3.5rem;
+}
+
+.Banner-ctnt p{
+    margin: 20px 0px;
+    color: #545F71;
+}
+
+.learn{
+    margin-top: 30px;
+}
+
+/* this section of code is for the Referral code copy section */
+.RefCode{
+
+}
+
+.BgImg img{
+    height: 100px;
+}
+.ref{
+    padding:0px 20px;
+}
+
+.ref-ct{
+    margin: 10px 0px;
+}
+
+.ref-ct h2{
+    font-size: 20px;
+}
+
+.ref-ct p{
+    font-size: 11px;
+    color: #545F71;
+}
+.ref-field{
+    display: inline-flex;
+    border: 1px solid #004aad;
+    padding:7px;
+    border-radius: 10px;
+    margin: 10px 0px;
+    width: 100%;
+ 
+
+}
+.ref-field input[type = text]{
+    border: none;
+    color: red;
+    font-size: 16px;
+    padding: 0px 10px;
+    width: 100%;
+}
+
+.copied{
+    background-color: #004aad;
+    padding: 10px ;
+    border: none;
+}
+
+/* this section is for the ref assessments */
+.payref{
+    width: 50%;
+    gap: 50px;
+}
+.grids{
+    display: grid;
+    gap: 50px;
+
+    grid-template-columns: auto auto ;
+}
+
+.grid-item{
+
+}
+
+.grid-item p{
+    color: #545F71;
+}
+
+.grid-item h1{
+    color: #004aad;
+    font-size: 52px;
+}
