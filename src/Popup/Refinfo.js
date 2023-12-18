@@ -6,8 +6,10 @@ import gifts from '../Assets/gift.svg'
 
 import { FaCopy, FaCheck } from "react-icons/fa"; 
 import { IconContext } from 'react-icons';
+import { MdCancel } from "react-icons/md";
+import InputRef from '../Resources/InputRef'
 
-const Refinfo = () => {
+const Refinfo = ({onclick}) => {
     const [RefCode, setRefCode] = useState("QWPsfw4y6iwOSjpus")
     const [copy, setCopy] = useState(false)
  
@@ -45,46 +47,42 @@ const Refinfo = () => {
 
   return (
     <div className='Refinfo'>
+
+    <IconContext.Provider value ={{color:"#004aad", size:"20px"}}>  
+        <button onClick={onclick} className='close-bt'>
+            <MdCancel />
+        </button>   
+    </IconContext.Provider>
+         
         <div className='heading'>
             <h1>Our Referral Program</h1>
             <p>Invite your friends to use your referral code and earn.</p>
         </div>
 
-    <div className='mapdata'>
-        {DispData.map((items, index) => (
-            <div className='itemdiv' key = {index}>
-                <div className='image'>
-                    <img src={items.image} alt='message'/>
-                </div>
+        <div className='mapdata'>
+            {DispData.map((items, index) => (
+                <div className='itemdiv' key = {index}>
+                    <div className='image'>
+                            <img src={items.image} alt='message'/>
+                        </div>
+                    
 
-                <div className='attrib'>
-                    <h2>{items.title}</h2>
-                    <p>{items.text} </p>
+                    <div className='attrib'>
+                        <h2>{items.title}</h2>
+                        <p>{items.text} </p>
+                    </div>
                 </div>
+        ))}
+        </div>
+
+            <div className='ref'>
+            <div className='ref-info'>
+                <h2>Share your code to get rewarded</h2>
+                <p>Get your referral code and share with others:</p>
             </div>
-    ))}
-    </div>
 
-    <div className='ref'>
-    <div className='ref-ct'>
-        <h2>Share your code to get rewarded</h2>
-        <p>Get your referral code and share with others:</p>
-    </div>
-
-    <div className='ref-field'>
-        <input type='text' value={RefCode} readOnly/>
-
-        <IconContext.Provider value={{color:"white", size:"15px"}}>
-        <button className='copied' onClick={copyRef}>
-        {copy ? 
-            <FaCheck />:
-            <FaCopy />
-        }
-    </button>
-        </IconContext.Provider>
-      
-    </div>
-</div>
+            <InputRef />
+        </div>
     </div>
   )
 }

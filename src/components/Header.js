@@ -6,7 +6,7 @@ import './style.css'
 const Header = () => {
   return (
     <div className='Header'>
-        <div className='image'>
+        <div className='images'>
             <img src={logo} alt ="logo"/>
         </div>
 
