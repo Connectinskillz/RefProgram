@@ -6,33 +6,7 @@
   box-sizing: border-box;
 }
 .App{
-  padding:20px 70px ;
-  background-color: #FDFDFD;
-  font-family: 'Poppins', sans-serif;
-  height: 100vh;
+ 
 }
 
-.infosec{
-  display: flex;
-  justify-content: space-between;
-
-}
-
-.overlay{
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(128, 128, 128, 0.34);
-}
-
-@media screen and (max-width:425px) {
-  .App{
-    padding: 20px;
-  }
-  .infosec{
-    flex-direction: column-reverse;
-  }
-}
-
+  

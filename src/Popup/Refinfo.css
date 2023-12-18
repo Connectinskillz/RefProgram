@@ -108,3 +108,9 @@
     }
     
 }
+
+@media screen and (min-width:426px) and (max-width:768px) {
+    .mapdata{
+        margin: 50px 0px;
+       }
+}

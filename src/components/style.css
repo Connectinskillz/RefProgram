@@ -172,3 +172,35 @@
 
     
 }
+
+@media screen and (min-width:426px) and (max-width:768px) {
+    .Banner-ctnt h3{
+        font-size: 36px;
+        line-height:3rem;
+    }
+    .Banner-disp img{
+        height: 0%;
+        display: none;
+    }
+
+    .BgImg img{
+        height: 70px;
+    }
+
+    .grids{
+        gap: 20px;
+        grid-template-columns: 50% 50% ;
+       margin: 0px 10px;
+
+    }
+
+
+    .grid-item p{
+        font-size: 14px;
+    }
+
+    .grid-item h1{
+        font-size: 32px;
+    
+    }
+}
