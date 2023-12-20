@@ -6,6 +6,7 @@ const Banner = ({onDisp}) => {
   return (
     <div className='Banner'>
         <div className='Banner-ctnt'>
+          <p className='userID'>Hi, Ademola Adegbamigbe</p>
             <h3>Refer People <br/>and earn cash rewards</h3>
             <p>Earn cash rewards for every paying customer you refer. The more you refer, the greater your income.  Click on the button to know more.</p>
 

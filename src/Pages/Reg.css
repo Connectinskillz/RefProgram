@@ -1,0 +1,85 @@
+.register{
+    
+}
+.cent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+
+.cent img{
+    height: 40px ;
+}
+
+.Reg-head{
+    margin-bottom: 50px;
+}
+
+.Reg-body{
+    box-shadow: 1px 10px 35px #cbc6c63a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 50px ;
+    height:auto ;
+    border-radius: 15px;
+}
+
+.Reg-body form{
+    width: 100%;
+}
+
+.in-put{
+    width: 100%;
+    border: none;
+    padding: 5px;
+    outline: none;
+    background-color: #b5b5b500;
+}
+.pass{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0px;
+}
+.viewer{
+    display: flex;
+    margin-left:10px;
+
+}
+
+/* the login section */
+.login{
+
+}
+
+.Login-body{
+    box-shadow: 1px 10px 35px #cbc6c63a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    padding: 50px ;
+    height:auto ;
+    border-radius: 15px;
+}
+
+@media screen and (max-width:425px) {
+    .Reg-body{
+        padding: 30px;
+        width: 90%;
+    }
+
+    .Reg-head h1{
+        font-size: 18px;
+    }
+
+    .Login-body{
+        padding: 20px;
+        width: 75%;
+    }
+}
