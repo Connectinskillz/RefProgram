@@ -12,8 +12,12 @@
     height: 40px ;
 }
 
-.Reg-head{
+.Reg-head, .Login-head{
     margin-bottom: 50px;
+}
+
+.Reg-head p{
+    font-size: 16px;
 }
 
 .Reg-body{
@@ -74,8 +78,13 @@
         width: 90%;
     }
 
-    .Reg-head h1{
-        font-size: 18px;
+    .Reg-head h1, .Login-head h1
+    {
+        font-size: 24px;
+    }
+
+    .Reg-head p, .Login-head p{
+        font-size: 12px
     }
 
     .Login-body{

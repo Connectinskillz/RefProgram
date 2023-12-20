@@ -28,6 +28,9 @@ const Login = () => {
   }
   return (
     <div className='Login'>
+      <div className='cent'>
+          <img src={logo} alt='logo'/>
+      </div>
       <div className='Login-body'>
 
       <div className='Login-head'>
