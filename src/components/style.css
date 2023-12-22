@@ -43,7 +43,7 @@
 
 /* this section of code is for the Referral code copy section */
 .RefCode{
-
+   
 }
 
 .BgImg img{
@@ -93,6 +93,7 @@
 /* this section is for the ref assessments */
 .payref{
     width: 50%;
+
 }
 .grids{
     display: grid;
@@ -154,6 +155,7 @@
 
     .payref{
         margin: 50px 0px;
+        width: 100%;
     }
 
     .grids{
@@ -192,6 +194,17 @@
 
     .BgImg img{
         height: 70px;
+    }
+
+    .RefCode{
+        width: 100%;
+    }
+    .BgImg img{
+        height:100%;
+        width: 100%;
+    }
+    .payref{
+        width: 100%;
     }
 
     .grids{

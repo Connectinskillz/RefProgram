@@ -7,7 +7,7 @@ const InputRef = () => {
     const [copy, setCopy] = useState(false)
  
     // function to copy the text
-    const copyRef = (e) =>{
+    const copyReferral = (e) =>{
         navigator.clipboard.writeText(RefCode)
         setCopy(true)
     }
@@ -22,7 +22,7 @@ const InputRef = () => {
     <input type='text' value={RefCode} readOnly/>
 
     <IconContext.Provider value={{color:"white", size:"15px"}}>
-    <button className='copied' onClick={copyRef}>
+    <button className='copied' onClick={copyReferral}>
     {copy ? 
         <FaCheck />:
         <FaCopy />

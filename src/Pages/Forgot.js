@@ -26,9 +26,7 @@ const Forgot = () => {
         setShowed(!showed)
     }
 
-    const handleSubmit = (e) =>{
-        console.log('submitted')
-    }
+   
   return (
     <div className='fg-page'>
         <div className='cent'>
@@ -72,7 +70,7 @@ const Forgot = () => {
                         }
                     </div>
 
-                    <Button name = "Change Password" classed='btn-01'/>
+                    <Button name = "Reset" classed='btn-01'/>
             </form>
         </div>
 

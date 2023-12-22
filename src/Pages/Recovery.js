@@ -1,11 +1,14 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import logo from "../Assets/connectskillz 13.svg"
 import Inputs from '../Resources/Inputs'
 import Button from '../Resources/Buttons'
+import { IoIosMailUnread } from "react-icons/io";
+import { IconContext } from 'react-icons';
 
 const Recovery = () => {
     const recoveryRef = useRef()
     const [recEmail, setRecEmail] = useState("")
+    const [prompt, setPrompt] = useState(false)
 
     const handleEntry = (e) =>{
         setRecEmail(e.target.value)
@@ -15,8 +18,16 @@ const Recovery = () => {
     const handleEmail = (e) =>{
         e.preventDefault()
         console.log(recEmail)
+        setPrompt(true)
     }
-  return (
+
+    useEffect(() =>{
+        setTimeout(() => {
+            setPrompt(false)
+        }, 4000);
+    })
+
+    return (
     <div className='Recovery'>
         <div className='cent'>
             <img src={logo} alt='logo'/>
@@ -36,6 +47,7 @@ const Recovery = () => {
                 name ="recEmail"
                 inputvalue = {recEmail}
                 handlechange ={handleEntry}
+                inputref ={recoveryRef}
                 
                 />
                 <div className='ct-btn'>
@@ -44,6 +56,20 @@ const Recovery = () => {
 
             </form>
         </div>
+        { prompt ?
+            <div className='prompt'>
+                <div className='ptp-body'>
+                <IconContext.Provider value={{size:"30px", color:"#004aad"}}> 
+                    <IoIosMailUnread />
+                </IconContext.Provider>
+                    <h4>Email Sent</h4>
+                    <p>Email to reset your password has been sent to your email.</p>
+                </div>
+            </div>
+            :
+            null
+        }
+        
     </div>
   )
 }

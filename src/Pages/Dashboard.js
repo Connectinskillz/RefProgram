@@ -36,8 +36,8 @@ const Dashboard = () => {
         <Header />
         <Banner  onDisp = {closePopup}/>
         <div className='infosec'>
-        <RefCode />
-        <Payref />
+          <RefCode />
+          <Payref />
         </div>       
         {cancel ? 
         null : 

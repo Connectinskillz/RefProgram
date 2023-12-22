@@ -29,4 +29,16 @@
     }
   }
 
+  @media screen and (min-width:426px) and (max-width:768px) {
+    .Dashboard{
+      padding: 20px;
+
+    }
+    .infosec{
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
 

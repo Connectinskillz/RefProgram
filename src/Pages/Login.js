@@ -7,13 +7,13 @@ import logo from "../Assets/connectskillz 13.svg"
 import Button from '../Resources/Buttons'
 import {Link} from 'react-router-dom'
 
-const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+// const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 const Login = () => {
   // useref to track to add focus to the email field
   const mailRef = useRef()
-  const [validation, setvalidation] = useState(false)
-  const [error, setError] = useState("")
+  // const [validation, setvalidation] = useState(false)
+  // const [error, setError] = useState("")
 
   const [show, setShow ] =useState(false)
   const [loginInfo, setLoginInfo] = useState({

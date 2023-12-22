@@ -48,7 +48,7 @@ const Refinfo = ({onclick}) => {
   return (
     <div className='Refinfo'>
 
-    <IconContext.Provider value ={{color:"#004aad", size:"20px"}}>  
+    <IconContext.Provider value ={{color:"#004aad", size:"30px"}}>  
         <button onClick={onclick} className='close-bt'>
             <MdCancel />
         </button>   

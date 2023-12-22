@@ -92,7 +92,7 @@
 .registered a{
     color: #004aad;
     text-decoration: none;
-    margin:0px 10px;
+    margin:0px 5px;
 }
 
 .forg{
@@ -133,19 +133,63 @@
     justify-content: center;
     margin: 20px 0px;
 }
+.prompt{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 1px 10px 35px #cbc6c63a;
 
+}
+
+.ptp-body{
+    background-color: white;
+    border:1px solid #004aad ;
+    border-left: 5px solid #004aad;
+    text-align: center;
+    border-radius:0px 10px 10px 0px ;
+    font-size: 11px;
+    padding: 10px ;
+}
+
+.ptp-body h4{
+    color: #004aad;
+}
 @media screen and (max-width:425px) {
-    .Reg-body{
-        padding: 30px;
-        width: 90%;
+    .Reg-body, .forgot-body, .rec-body{
+        padding: 30px 20px;
+        width: 100%;
+        border: 1px solid black;
     }
 
-    .Reg-head h1, .Login-head h1
+    .Reg-head h1, .Login-head h1, 
+    .rec-head h1
     {
         font-size: 24px;
     }
 
-    .Reg-head p, .Login-head p{
+    .Reg-head p, .Login-head p,.rec-head p {
+        font-size: 12px
+    }
+
+    .Login-body{
+        padding: 20px;
+        width: 75%;
+    }
+}
+@media screen and (min-width:426px) and (max-width:768px) {
+    .Reg-body, .forgot-body, .rec-body{
+        padding: 30px 20px;
+        width: 90%;
+    }
+
+    .Reg-head h1, .Login-head h1, 
+    .rec-head h1
+    {
+        font-size: 24px;
+    }
+
+    .Reg-head p, .Login-head p,.rec-head p {
         font-size: 12px
     }
 
