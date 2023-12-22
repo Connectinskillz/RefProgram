@@ -4,7 +4,6 @@ import msg from '../Assets/Mask group.svg'
 import avatar from '../Assets/Vector.svg'
 import gifts from '../Assets/gift.svg'
 
-import { FaCopy, FaCheck } from "react-icons/fa"; 
 import { IconContext } from 'react-icons';
 import { MdCancel } from "react-icons/md";
 import InputRef from '../Resources/InputRef'
