@@ -11,6 +11,7 @@ const Inputs = (props) => {
         name ={props.name}
         onChange={props.handlechange}
         className ={props.classed}
+        ref={props.inputRef}
         />
     </div>
   )

@@ -7,6 +7,10 @@
     justify-content: center;
     margin: 50px;
 }
+.error{
+    color: red;
+    font-size: 11px;
+}
 
 .cent img{
     height: 40px ;
@@ -43,6 +47,7 @@
     outline: none;
     background-color: #b5b5b500;
 }
+
 .pass{
     width: 100%;
     display: flex;
@@ -52,6 +57,7 @@
 .viewer{
     display: flex;
     margin-left:10px;
+    cursor: pointer;
 
 }
 
@@ -60,7 +66,8 @@
 
 }
 
-.Login-body{
+
+.Login-body, .forgot-body, .rec-body{
     box-shadow: 1px 10px 35px #cbc6c63a;
     position: absolute;
     top: 50%;
@@ -70,6 +77,61 @@
     padding: 50px ;
     height:auto ;
     border-radius: 15px;
+   
+}
+
+.registered{
+    margin-top:  30px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+   
+}
+
+.registered a{
+    color: #004aad;
+    text-decoration: none;
+    margin:0px 10px;
+}
+
+.forg{
+    text-align: right;
+}
+
+.forgot a{
+    color: green;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.fg-heading{
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.disp-p{
+    display: flex;
+    align-items: center;
+    margin:10px 10px;
+}
+
+.disp-p p{
+    font-size: 11px;
+    margin:0px 10px;
+}
+.btn-01{
+    margin: 10px 0px;
+}
+.rec-head{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ct-btn{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
 }
 
 @media screen and (max-width:425px) {

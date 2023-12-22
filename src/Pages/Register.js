@@ -5,6 +5,7 @@ import { GoEye, GoEyeClosed } from 'react-icons/go'
 import './Reg.css'
 import { IconContext } from 'react-icons'
 import logo from "../Assets/connectskillz 13.svg"
+import { Link } from 'react-router-dom'
 
 
 const Register = () => {
@@ -101,6 +102,11 @@ const Register = () => {
                </div>
               <Button name = "Register" />
             </form>
+
+            <div className='registered'>
+                <p>Already Registered?</p>
+                 <Link to='./Login'>signin</Link>
+            </div>
         </div>
     </div>
   )

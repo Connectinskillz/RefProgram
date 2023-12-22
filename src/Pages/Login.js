@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Inputs from '../Resources/Inputs'
 import { GoEye, GoEyeClosed } from 'react-icons/go'
 import './Reg.css'
 import { IconContext } from 'react-icons'
 import logo from "../Assets/connectskillz 13.svg"
 import Button from '../Resources/Buttons'
+import {Link} from 'react-router-dom'
 
+const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 const Login = () => {
+  // useref to track to add focus to the email field
+  const mailRef = useRef()
+  const [validation, setvalidation] = useState(false)
+  const [error, setError] = useState("")
+
   const [show, setShow ] =useState(false)
   const [loginInfo, setLoginInfo] = useState({
     email:"",
@@ -23,9 +30,20 @@ const Login = () => {
   const view = () =>{
     setShow(!show)
   }
+
+  useEffect(() =>{
+    mailRef.current.focus()
+  }, [])
+
+  useEffect(()=>{
+  }, [loginInfo])
+
+
   const handleSubmit = (e) =>{
     console.log("hi")
   }
+
+
   return (
     <div className='Login'>
       <div className='cent'>
@@ -46,6 +64,7 @@ const Login = () => {
         name = "email"
         inputvalue = {loginInfo['email']}
         handlechange ={handleChange}
+        inputRef = {mailRef}
         />
 
         <div className='pass'>
@@ -56,8 +75,8 @@ const Login = () => {
               name = "Password"
               value = {loginInfo["Password"]}
               handlechange={handleChange}
-
           />
+          
           <IconContext.Provider value ={{size:"20px", color:"#004aad"}}>
           <div onClick={view} className='viewer'>
               {show ? 
@@ -67,10 +86,17 @@ const Login = () => {
           </div>
           </IconContext.Provider>
         </div>
+        <div className='forg'> 
+            <p className='forgot'><Link to='/Recovery'>Forgot your Password?</Link></p>
+        </div>
         <Button name="Login"/>
+    
 
      </form>
-      
+     <div className='registered'>
+        <p>New here?</p>
+          <Link to='/'>Register</Link>
+      </div>
       </div>
      
     </div>
