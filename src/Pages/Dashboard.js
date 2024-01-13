@@ -8,21 +8,28 @@ import axios from 'axios';
 import './dash.css'
 
 
-const BASE_URL = 'https://backend.connectinskillz.com/api/fetch_user_details/fasanyafemi%40gmail.com'
+const BASE_URL = 'https://backend.connectinskillz.com/api/fetch_user_details/'
 
 const Dashboard = () => {
-    const [cancel, setCancel] = useState(false)
-  const [ref, setRef] = useState()
+// State to manage User's fetched data
+  const [name, setName ] = useState('')
+  const [refCodes, setRefCodes] = useState("")
+  const [refNo, setRefNo] = useState("")
+ 
+  const [cancel, setCancel] = useState(false)
+  // const [ref, setRef] = useState()
 
   const closePopup = () =>{
     setCancel(!cancel);
-    console.log("what the hell")
   }
 
   const handleResponse = async () =>{
     try{
       const response =await axios(BASE_URL)
-    console.log(response)
+    setName(response.data.data.user["first_name"])
+    setRefCodes(response.data.data.user["referral_code"])
+    setRefNo(response.data.data['total_referred_users'])
+
     }catch(error){
       console.log(error.response)
     }
@@ -34,10 +41,10 @@ const Dashboard = () => {
   return (
     <div className='Dashboard'>
         <Header />
-        <Banner  onDisp = {closePopup}/>
+        <Banner  onDisp = {closePopup} userName= {name}/>
         <div className='infosec'>
-          <RefCode />
-          <Payref />
+          <RefCode refcodes = {refCodes}/>
+          <Payref refNo = {refNo}/>
         </div>       
         {cancel ? 
         null : 

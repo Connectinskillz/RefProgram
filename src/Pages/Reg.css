@@ -24,7 +24,7 @@
 .Reg-body{
     box-shadow: 1px 10px 35px #cbc6c63a;
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -45,11 +45,16 @@
     background-color: #b5b5b500;
 }
 
-.pass{
-    width: 100%;
-    display: flex;
+.show{
+    display: inline-flex;
+    width: auto;
     align-items: center;
     margin: 0px;
+    font-size: 11px;
+    margin: 10px 0px;
+}
+.show p{
+    margin: 0px 10px;
 }
 .viewer{
     display: flex;
@@ -57,6 +62,7 @@
     cursor: pointer;
 
 }
+
 
 /* the login section */
 
@@ -149,16 +155,23 @@
     color: #004aad;
 }
 @media screen and (max-width:425px) {
+    .cent{
+        margin:20px;
+    }
+
     .Reg-body, .forgot-body, .rec-body{
         padding: 30px 20px;
-        width: 100%;
-        border: 1px solid black;
+        width: 90%;
+    }
+
+    .Reg-head, .Login-head{
+        margin-bottom: 20xpx;
     }
 
     .Reg-head h1, .Login-head h1, 
     .rec-head h1
     {
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .Reg-head p, .Login-head p,.rec-head p {
@@ -176,6 +189,7 @@
         width: 90%;
     }
 
+   
     .Reg-head h1, .Login-head h1, 
     .rec-head h1
     {

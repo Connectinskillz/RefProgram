@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import BG from '../Assets/BG 13.svg'
 import InputRef from '../Resources/InputRef'
 
-const RefCode = () => {
+const RefCode = ({refcodes}) => {
    return (
     <div className='RefCode'>
         <div className='BgImg'>
@@ -15,7 +15,7 @@ const RefCode = () => {
                 <p>Get your referral code and share with others:</p>
             </div>
 
-            <InputRef />
+            <InputRef refcode = {refcodes}/>
         </div>
     </div> 
   )

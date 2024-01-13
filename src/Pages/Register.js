@@ -5,18 +5,26 @@ import { GoEye, GoEyeClosed } from 'react-icons/go'
 import './Reg.css'
 import { IconContext } from 'react-icons'
 import logo from "../Assets/connectskillz 13.svg"
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+
+
+const base_URL = 'https://backend.connectinskillz.com/api/referral_pg_reg'
 
 
 const Register = () => {
+
+    const Navigate = useNavigate()
     // to view password
     const [check, setCheck] = useState(false)
     // state management for input fields
     const [readInput, setReadInput] = useState({
-        fullname: "",
-        PhoneNumber: "", 
+        name: "",
+        phone_number: "", 
         email:"",
-        Password:""
+        password:"",
+        confirmpassword:""
     })
 
     const viewer = (e) =>{
@@ -32,8 +40,18 @@ const Register = () => {
         console.log(readInput)
     }
 // submit the form
-    const handleSubmit = (e) =>{
+    const handleSubmit = async(e) => {
+        e.preventDefault()
 
+        try {
+            const response = await axios.post(base_URL, readInput)
+            console.log(response)
+            if (response.status === 200) {
+                Navigate('/Dashboard')
+            }
+        } catch (error) {
+            console.log(error.response)
+        }
     }
 
     
@@ -46,7 +64,7 @@ const Register = () => {
         <div className='Reg-body'>
       
             <div className='Reg-head'>
-                <h1>Register for our Referral Program</h1>
+                <h1>Registeration</h1>
                 <p>Register to be part of the referral program.</p>
             </div>
 
@@ -57,8 +75,8 @@ const Register = () => {
                classed="in-put"
                type="text"
                placeholder="Full Name "
-               name = "fullname"
-               inputvalue = {readInput['fullname']}
+               name = "name"
+               inputvalue = {readInput['name']}
                handlechange ={handleChange}
                />
 
@@ -75,31 +93,47 @@ const Register = () => {
                classed="in-put"
                type ="text"
                placeholder ="Phone Number"
-               name ="PhoneNumber"
-               inputvalue = {readInput['PhoneNumber']}
+               name ="phone_number"
+               inputvalue = {readInput['phone_number']}
                handlechange= {handleChange}
                
                />
 
-               <div className='pass'>
                     <Inputs 
                     classed="in-put"
                         type ={check ? "text": "password"}
                         placeholder ="Enter Password"
-                        name = "Password"
-                        value = {readInput["Password"]}
+                        name = "password"
+                        value = {readInput["password"]}
                         handlechange={handleChange}
 
                     />
-                    <IconContext.Provider value ={{size:"20px", color:"#004aad"}}>
+
+                    <Inputs 
+                    classed="in-put"
+                        type ={check ? "text": "password"}
+                        placeholder ="Confirm Password"
+                        name = "confirmpassword"
+                        value = {readInput["confirmpassword"]}
+                        handlechange={handleChange}
+
+                    />
+
+                    <IconContext.Provider value ={{size:"15px", color:"#004aad"}}>
                     <div onClick={viewer} className='viewer'>
                         {check ? 
-                            <GoEyeClosed /> :
-                            <GoEye />
+                            <div className='show'>
+                                <GoEyeClosed />
+                                <p>Hide Password</p>
+                            </div> :
+                            <div className='show'>
+                                <GoEye /> 
+                                <p>Show Password</p>
+                            </div>
                         }
                     </div>
                     </IconContext.Provider>
-               </div>
+               
               <Button name = "Register" />
             </form>
 
