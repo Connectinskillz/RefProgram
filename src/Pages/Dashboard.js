@@ -8,7 +8,7 @@ import axios from 'axios';
 import './dash.css'
 
 
-const BASE_URL = 'https://backend.connectinskillz.com/api/fetch_user_details/'
+const BASE_URL = 'https://backend.connectinskillz.com/api/fetch_user_details/ridwanfolayimi@gmail.com'
 
 const Dashboard = () => {
 // State to manage User's fetched data
@@ -26,9 +26,10 @@ const Dashboard = () => {
   const handleResponse = async () =>{
     try{
       const response =await axios(BASE_URL)
-    setName(response.data.data.user["first_name"])
-    setRefCodes(response.data.data.user["referral_code"])
+    setName(response.data.data.user["name"])
+    setRefCodes(response.data.data.user['referral_code'])
     setRefNo(response.data.data['total_referred_users'])
+    console.log(response.data)
 
     }catch(error){
       console.log(error.response)
