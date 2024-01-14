@@ -43,6 +43,7 @@ const Register = () => {
       const response = await axios.post(base_URL, readInput);
       console.log(response);
       if (response.status === 200) {
+        localStorage.setItem("userEmail", readInput.email);
         Navigate("/Dashboard");
       }
     } catch (error) {
