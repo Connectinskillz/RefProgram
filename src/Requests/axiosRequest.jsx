@@ -53,3 +53,17 @@ export const userLogin = async (loginInfo, navigate) => {
       }
     });
 };
+
+export const forgotPassword = async (email) => {
+    const data = {email}
+    await axios
+      .post(`${base_URL}/forgot-password`, data)
+      .then((response) => {
+        console.log(response);        
+      })
+      .catch((err) => {
+        if (err.response.data.message) {
+          console.log(err.response);
+        }
+      });
+  };
