@@ -6,7 +6,7 @@ import "./Reg.css";
 import { IconContext } from "react-icons";
 import logo from "../Assets/connectskillz 13.svg";
 import { Link, Navigate } from "react-router-dom";
-import axios from "axios";
+import { refferalRegister } from "../Requests/axiosRequest";
 import { useNavigate } from "react-router-dom";
 
 const base_URL = "https://backend.connectinskillz.com/api/referral_pg_reg";
@@ -38,17 +38,7 @@ const Register = () => {
   // submit the form
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(base_URL, readInput);
-      console.log(response);
-      if (response.status === 200) {
-        localStorage.setItem("userEmail", readInput.email);
-        Navigate("/Dashboard");
-      }
-    } catch (error) {
-      console.log(error.response);
-    }
+    refferalRegister(readInput, Navigate);
   };
 
   return (

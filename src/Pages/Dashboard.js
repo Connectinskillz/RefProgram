@@ -4,7 +4,8 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Payref from "../components/Payref";
 import RefCode from "../components/RefCode";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { fetchUserDetails } from "../Requests/axiosRequest";
 import "./dash.css";
 
 const Dashboard = () => {
@@ -12,60 +13,58 @@ const Dashboard = () => {
   const [name, setName] = useState("");
   const [refCodes, setRefCodes] = useState("");
   const [refNo, setRefNo] = useState("");
+  // const [email, setEmail] = useState("");
 
   const [cancel, setCancel] = useState(false);
   // const [ref, setRef] = useState()
 
+  const navigate = useNavigate();
+
   const fetchFromLS = (user) => {
     try {
-      const data = localStorage.getItem(user);      
+      const data = localStorage.getItem(user);
       if (data !== null) {
-        return data
-      }
+        handleResponse(data);
+      } else navigate("/Login");
     } catch (error) {
+      navigate("/Login");
       console.error("Error fetching data from localStorage:", error);
+      console.error("User must login or register");
     }
-    return "";
   };
-  const BASE_URL =
-    `https://backend.connectinskillz.com/api/fetch_user_details/${fetchFromLS("userEmail")}`;
 
   const closePopup = () => {
     setCancel(!cancel);
   };
 
-  
-
-  const handleResponse = async () => {
-    try {
-      const response = await axios(BASE_URL);
-      setName(response.data.data.user["name"]);
-      setRefCodes(response.data.data.user["referral_code"]);
-      setRefNo(response.data.data["total_referred_users"]);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error.response);
-    }
+  const handleResponse = async (email) => {
+    const response = await fetchUserDetails(email);
+    console.log(response);
+    setName(response.data.user["name"]);
+    setRefCodes(response.data.user["referral_code"]);
+    setRefNo(response.data["total_referred_users"]);
   };
 
   useEffect(() => {
-    handleResponse();
+    fetchFromLS("userEmail");
   }, []);
 
   return (
-    <div className="Dashboard">
-      <Header />
-      <Banner onDisp={closePopup} userName={name} />
-      <div className="infosec">
-        <RefCode refcodes={refCodes} />
-        <Payref refNo={refNo} />
-      </div>
-      {cancel ? null : (
-        <div className="overlay">
-          <Refinfo onclick={closePopup} />
+    <>
+      <div className="Dashboard">
+        <Header />
+        <Banner onDisp={closePopup} userName={name} />
+        <div className="infosec">
+          <RefCode refcodes={refCodes} />
+          <Payref refNo={refNo} />
         </div>
-      )}
-    </div>
+        {cancel ? null : (
+          <div className="overlay">
+            <Refinfo onclick={closePopup} />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
