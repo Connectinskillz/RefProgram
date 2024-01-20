@@ -60,7 +60,7 @@ const Dashboard = () => {
         </div>
         {cancel ? null : (
           <div className="overlay">
-            <Refinfo onclick={closePopup} />
+            <Refinfo onclick={closePopup} refCodes={refCodes}/>
           </div>
         )}
       </div>

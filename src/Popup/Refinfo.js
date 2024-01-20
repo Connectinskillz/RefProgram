@@ -8,7 +8,7 @@ import { IconContext } from "react-icons";
 import { MdCancel } from "react-icons/md";
 import InputRef from "../Resources/InputRef";
 
-const Refinfo = ({ onclick }) => {
+const Refinfo = ({ onclick, refCodes }) => {
   const [RefCode, setRefCode] = useState("QWPsfw4y6iwOSjpus");
   const [copy, setCopy] = useState(false);
 
@@ -78,7 +78,7 @@ const Refinfo = ({ onclick }) => {
           <p>Get your referral code and share with others:</p>
         </div>
 
-        <InputRef />
+        <InputRef refcode={refCodes}/>
       </div>
     </div>
   );
