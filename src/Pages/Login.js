@@ -9,12 +9,13 @@ import { userLogin } from "../Requests/axiosRequest";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-// const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 const Login = () => {
   // useref to track to add focus to the email field
   const mailRef = useRef();
-  // const [validation, setvalidation] = useState(false)
+  const [changing, setChanging] = useState(false);
+  const [validation, setvalidation] = useState(false);
   // const [error, setError] = useState("")
 
   const [show, setShow] = useState(false);
@@ -25,26 +26,33 @@ const Login = () => {
   const handleChange = (e) => {
     var name = e.target.name;
     var value = e.target.value;
-
     setLoginInfo({ ...loginInfo, [name]: value });
+    setChanging(!changing);
   };
 
   const view = () => {
     setShow(!show);
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     mailRef.current.focus();
   }, []);
 
-  useEffect(() => {}, [loginInfo]);
+  useEffect(() => {
+    if (MAIL_REGEX.test(loginInfo["email"]) && loginInfo["password"]) {
+      setvalidation(true);
+      console.log("true email");
+    }
+  }, [changing]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log(loginInfo)
-    await userLogin(loginInfo, navigate);
+    e.preventDefault();
+    console.log(loginInfo);
+    if (validation) {
+      await userLogin(loginInfo, navigate);
+    }
   };
 
   return (
