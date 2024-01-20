@@ -7,12 +7,14 @@ import { IconContext } from "react-icons";
 import logo from "../Assets/connectskillz 13.svg";
 import { Link, Navigate } from "react-router-dom";
 import { refferalRegister } from "../Requests/axiosRequest";
+import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
 
 const base_URL = "https://backend.connectinskillz.com/api/referral_pg_reg";
 
 const Register = () => {
   const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+  const [loading, setLoading] = useState(false);
   const [valid, setValid] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
   const [changing, setChanging] = useState(false);
@@ -43,7 +45,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid) {
-      refferalRegister(readInput, Navigate);
+      setLoading(true)
+      await refferalRegister(readInput, Navigate);
+      setLoading(false)
     }
   };
 
@@ -62,7 +66,7 @@ const Register = () => {
 
     if (MAIL_REGEX.test(readInput["email"])) {
       setValidEmail(true);
-      console.log("true email")
+      console.log("true email");
     }
   }, [changing]);
 
@@ -140,7 +144,7 @@ const Register = () => {
             </div>
           </IconContext.Provider>
 
-          <Button name="Register" />
+          <Button name={loading ? <Loader /> : "Register"} />
         </form>
 
         <div className="registered">

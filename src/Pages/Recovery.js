@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../Assets/connectskillz 13.svg";
 import Inputs from "../Resources/Inputs";
+import Loader from "../Loader/Loader";
 import Button from "../Resources/Buttons";
 import { forgotPassword } from "../Requests/axiosRequest";
 import { IoIosMailUnread } from "react-icons/io";
@@ -8,6 +9,7 @@ import { IconContext } from "react-icons";
 
 const Recovery = () => {
   const recoveryRef = useRef();
+  const [loading, setLoading] = useState(false);
   const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
   const [email, setEmail] = useState("");
   const [prompt, setPrompt] = useState(false);
@@ -22,7 +24,9 @@ const Recovery = () => {
   const handleEmail = async (e) => {
     if (valid) {
       e.preventDefault();
+      setLoading(true);
       await forgotPassword(email);
+      setLoading(false);
       setEmail("");
       setPrompt(true);
     }
@@ -64,7 +68,7 @@ const Recovery = () => {
             inputref={recoveryRef}
           />
           <div className="ct-btn">
-            <Button name="submit" />
+            <Button name={loading ? <Loader /> : "submit"} />
           </div>
         </form>
       </div>

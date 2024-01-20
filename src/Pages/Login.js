@@ -5,6 +5,7 @@ import "./Reg.css";
 import { IconContext } from "react-icons";
 import logo from "../Assets/connectskillz 13.svg";
 import Button from "../Resources/Buttons";
+import Loader from "../Loader/Loader";
 import { userLogin } from "../Requests/axiosRequest";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -14,6 +15,7 @@ const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const Login = () => {
   // useref to track to add focus to the email field
   const mailRef = useRef();
+  const [loading, setLoading] = useState(false)
   const [changing, setChanging] = useState(false);
   const [validation, setvalidation] = useState(false);
   // const [error, setError] = useState("")
@@ -51,7 +53,9 @@ const Login = () => {
     e.preventDefault();
     console.log(loginInfo);
     if (validation) {
+      setLoading(true)
       await userLogin(loginInfo, navigate);
+      setLoading(false)
     }
   };
 
@@ -98,7 +102,7 @@ const Login = () => {
               <Link to="/Recovery">Forgot your Password?</Link>
             </p>
           </div>
-          <Button name="Login" />
+          <Button name={loading ? <Loader/> : "Login"} />
         </form>
         <div className="registered">
           <p>New here?</p>
