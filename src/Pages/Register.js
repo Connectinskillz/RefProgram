@@ -56,7 +56,8 @@ const Register = () => {
       readInput["name"] &&
       readInput["phone_number"] &&
       validEmail &&
-      readInput["password"] === readInput["confirmpassword"]
+      readInput["password"].length >= 8 &&
+      readInput["password"] === readInput["confirmpassword"] 
     ) {
       setValid(true);
       console.log("valid");
