@@ -90,13 +90,16 @@
 /* this section is for the ref assessments */
 .payref{
     width: 50%;
-
 }
 .grids{
-    display: grid;
-    gap: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap:3em;
+}
 
-    grid-template-columns: auto auto ;
+.grid-item {
+    flex: 0 1 15em;
 }
 
 .grid-item p{

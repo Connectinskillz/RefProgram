@@ -7,8 +7,7 @@
 
 .infosec{
     display: flex;
-    justify-content: space-between;
-  
+    justify-content: space-between;    
   }
   
   .overlay{
@@ -26,6 +25,7 @@
     }
     .infosec{
       flex-direction: column-reverse;
+      width: 90vw;
     }
   }
 

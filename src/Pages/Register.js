@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Inputs from "../Resources/Inputs";
 import Button from "../Resources/Buttons";
 import { GoEye, GoEyeClosed } from "react-icons/go";
@@ -12,6 +12,10 @@ import { useNavigate } from "react-router-dom";
 const base_URL = "https://backend.connectinskillz.com/api/referral_pg_reg";
 
 const Register = () => {
+  const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+  const [valid, setValid] = useState(false);
+  const [validEmail, setValidEmail] = useState(false);
+  const [changing, setChanging] = useState(false);
   const Navigate = useNavigate();
   // to view password
   const [check, setCheck] = useState(false);
@@ -33,13 +37,34 @@ const Register = () => {
     var value = e.target.value;
 
     setReadInput({ ...readInput, [name]: value });
-    console.log(readInput);
+    setChanging(!changing);
   };
   // submit the form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    refferalRegister(readInput, Navigate);
+    if (valid) {
+      refferalRegister(readInput, Navigate);
+    }
   };
+
+  useEffect(() => {
+    if (
+      readInput["name"] &&
+      readInput["phone_number"] &&
+      validEmail &&
+      readInput["password"] === readInput["confirmpassword"]
+    ) {
+      setValid(true);
+      console.log("valid");
+    } else {
+      setValid(false);
+    }
+
+    if (MAIL_REGEX.test(readInput["email"])) {
+      setValidEmail(true);
+      console.log("true email")
+    }
+  }, [changing]);
 
   return (
     <div className="register">

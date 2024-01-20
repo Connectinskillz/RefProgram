@@ -24,7 +24,7 @@
 .Reg-body{
     box-shadow: 1px 10px 35px #cbc6c63a;
     position: absolute;
-    top: 55%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -157,6 +157,10 @@
 @media screen and (max-width:425px) {
     .cent{
         margin:20px;
+    }
+
+    .Reg-body{
+        top:55%;
     }
 
     .Reg-body, .forgot-body, .rec-body{
