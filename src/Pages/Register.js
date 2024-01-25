@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Inputs from "../Resources/Inputs";
 import Button from "../Resources/Buttons";
 import { GoEye, GoEyeClosed } from "react-icons/go";
@@ -6,6 +6,7 @@ import "./Reg.css";
 import { IconContext } from "react-icons";
 import logo from "../Assets/connectskillz 13.svg";
 import { Link, Navigate } from "react-router-dom";
+import { countries } from "countries-list";
 import { refferalRegister } from "../Requests/axiosRequest";
 import Loader from "../Loader/Loader";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +19,7 @@ const Register = () => {
   const [valid, setValid] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
   const [changing, setChanging] = useState(false);
+  const [country, setCountry] = useState("");
   const Navigate = useNavigate();
   // to view password
   const [check, setCheck] = useState(false);
@@ -29,6 +31,20 @@ const Register = () => {
     password: "",
     confirmpassword: "",
   });
+
+  const [countryOptions, setCountryOptions] = useState([]);
+
+  useEffect(() => {
+    let options = [];
+    // Transform the countries object into an array of options
+    Object.values(countries).map((countryCode) => {
+      options.push({
+        country: countryCode.name,
+      });
+    });
+
+    setCountryOptions(options);
+  }, []);
 
   const viewer = (e) => {
     setCheck(!check);
@@ -45,9 +61,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid) {
-      setLoading(true)
+      setLoading(true);
       await refferalRegister(readInput, Navigate);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -57,7 +73,9 @@ const Register = () => {
       readInput["phone_number"] &&
       validEmail &&
       readInput["password"].length >= 8 &&
-      readInput["password"] === readInput["confirmpassword"] 
+      readInput["password"] === readInput["confirmpassword"] &&
+      country.length > 0 &&
+      country !== "Select your country"
     ) {
       setValid(true);
       console.log("valid");
@@ -102,9 +120,19 @@ const Register = () => {
             handlechange={handleChange}
           />
 
+          <select className="in-put" id="select" onChange={(e)=>{
+            setCountry(e.target.value)
+            setChanging(!changing)
+          }}>
+            <option> Select your country</option>
+            {countryOptions.map((item) => {
+              return <option>{item.country}</option>;
+            })}
+          </select>
+
           <Inputs
             classed="in-put"
-            type="text"
+            type="number"
             placeholder="Phone Number"
             name="phone_number"
             inputvalue={readInput["phone_number"]}

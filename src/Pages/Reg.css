@@ -1,211 +1,225 @@
-.cent{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
+.cent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
 }
-.error{
-    color: red;
-    font-size: 11px;
-}
-
-.cent img{
-    height: 40px ;
+.error {
+  color: red;
+  font-size: 11px;
 }
 
-.Reg-head, .Login-head{
-    margin-bottom: 50px;
+.cent img {
+  height: 40px;
 }
 
-.Reg-head p{
-    font-size: 16px;
+.Reg-head,
+.Login-head {
+  margin-bottom: 50px;
 }
 
-.Reg-body{
-    box-shadow: 1px 10px 35px #cbc6c63a;
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    padding: 50px ;
-    height:auto ;
-    border-radius: 15px;
+.Reg-head p {
+  font-size: 16px;
 }
 
-.Reg-body form{
-    width: 100%;
+.Reg-body {
+  box-shadow: 1px 10px 35px #cbc6c63a;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 50px;
+  height: auto;
+  border-radius: 15px;
 }
 
-.in-put{
-    width: 100%;
-    border: none;
-    padding: 5px;
-    outline: none;
-    background-color: #b5b5b500;
+.Reg-body form {
+  width: 100%;
 }
 
-.show{
-    display: inline-flex;
-    width: auto;
-    align-items: center;
-    margin: 0px;
-    font-size: 11px;
-    margin: 10px 0px;
-}
-.show p{
-    margin: 0px 10px;
-}
-.viewer{
-    display: flex;
-    margin-left:10px;
-    cursor: pointer;
-
+.in-put {
+  width: 100%;
+  border: none;
+  padding: 5px;
+  outline: none;
+  background-color: #b5b5b500;
 }
 
+#select {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #b5b5b544;
+  cursor: pointer;
+}
+
+.show {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  margin: 0px;
+  font-size: 11px;
+  margin: 10px 0px;
+}
+.show p {
+  margin: 0px 10px;
+}
+.viewer {
+  display: flex;
+  margin-left: 10px;
+  cursor: pointer;
+}
 
 /* the login section */
 
-.Login-body, .forgot-body, .rec-body{
-    box-shadow: 1px 10px 35px #cbc6c63a;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.Login-body,
+.forgot-body,
+.rec-body {
+  box-shadow: 1px 10px 35px #cbc6c63a;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    padding: 50px ;
-    height:auto ;
-    border-radius: 15px;
-   
+  padding: 50px;
+  height: auto;
+  border-radius: 15px;
 }
 
-.registered{
-    margin-top:  30px ;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-   
+.registered {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
 }
 
-.registered a{
-    color: #004aad;
-    text-decoration: none;
-    margin:0px 5px;
+.registered a {
+  color: #004aad;
+  text-decoration: none;
+  margin: 0px 5px;
 }
 
-.forg{
-    text-align: right;
+.forg {
+  text-align: right;
 }
 
-.forgot a{
-    color: green;
-    font-size: 11px;
-    text-decoration: none;
+.forgot a {
+  color: green;
+  font-size: 11px;
+  text-decoration: none;
 }
 
-.fg-heading{
-    margin-bottom: 50px;
-    text-align: center;
+.fg-heading {
+  margin-bottom: 50px;
+  text-align: center;
 }
 
-.disp-p{
-    display: flex;
-    align-items: center;
-    margin:10px 10px;
+.disp-p {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px;
 }
 
-.disp-p p{
-    font-size: 11px;
-    margin:0px 10px;
+.disp-p p {
+  font-size: 11px;
+  margin: 0px 10px;
 }
-.btn-01{
-    margin: 10px 0px;
+.btn-01 {
+  margin: 10px 0px;
 }
-.rec-head{
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.ct-btn{
-    display: flex;
-    justify-content: center;
-    margin: 20px 0px;
-}
-.prompt{
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 1px 10px 35px #cbc6c63a;
-
+.rec-head {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.ptp-body{
-    background-color: white;
-    border:1px solid #004aad ;
-    border-left: 5px solid #004aad;
-    text-align: center;
-    border-radius:0px 10px 10px 0px ;
-    font-size: 11px;
-    padding: 10px ;
+.ct-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0px;
+}
+.prompt {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 1px 10px 35px #cbc6c63a;
 }
 
-.ptp-body h4{
-    color: #004aad;
+.ptp-body {
+  background-color: white;
+  border: 1px solid #004aad;
+  border-left: 5px solid #004aad;
+  text-align: center;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 11px;
+  padding: 10px;
 }
-@media screen and (max-width:425px) {
-    .cent{
-        margin:20px;
-    }
 
-    .Reg-body{
-        top:55%;
-    }
-
-    .Reg-body, .forgot-body, .rec-body{
-        padding: 30px 20px;
-        width: 90%;
-    }
-
-    .Reg-head, .Login-head{
-        margin-bottom: 20xpx;
-    }
-
-    .Reg-head h1, .Login-head h1, 
-    .rec-head h1
-    {
-        font-size: 18px;
-    }
-
-    .Reg-head p, .Login-head p,.rec-head p {
-        font-size: 12px
-    }
-
-    .Login-body{
-        padding: 20px;
-        width: 75%;
-    }
+.ptp-body h4 {
+  color: #004aad;
 }
-@media screen and (min-width:426px) and (max-width:768px) {
-    .Reg-body, .forgot-body, .rec-body{
-        padding: 30px 20px;
-        width: 90%;
-    }
+@media screen and (max-width: 425px) {
+  .cent {
+    margin: 20px;
+  }
 
-   
-    .Reg-head h1, .Login-head h1, 
-    .rec-head h1
-    {
-        font-size: 24px;
-    }
+  .Reg-body {
+    top: 55%;
+  }
 
-    .Reg-head p, .Login-head p,.rec-head p {
-        font-size: 12px
-    }
+  .Reg-body,
+  .forgot-body,
+  .rec-body {
+    padding: 30px 20px;
+    width: 90%;
+  }
 
-    .Login-body{
-        padding: 20px;
-        width: 75%;
-    }
+  .Reg-head,
+  .Login-head {
+    margin-bottom: 20xpx;
+  }
+
+  .Reg-head h1,
+  .Login-head h1,
+  .rec-head h1 {
+    font-size: 18px;
+  }
+
+  .Reg-head p,
+  .Login-head p,
+  .rec-head p {
+    font-size: 12px;
+  }
+
+  .Login-body {
+    padding: 20px;
+    width: 75%;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  .Reg-body,
+  .forgot-body,
+  .rec-body {
+    padding: 30px 20px;
+    width: 90%;
+  }
+
+  .Reg-head h1,
+  .Login-head h1,
+  .rec-head h1 {
+    font-size: 24px;
+  }
+
+  .Reg-head p,
+  .Login-head p,
+  .rec-head p {
+    font-size: 12px;
+  }
+
+  .Login-body {
+    padding: 20px;
+    width: 75%;
+  }
 }
