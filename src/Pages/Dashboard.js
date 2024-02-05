@@ -20,6 +20,18 @@ const Dashboard = () => {
 
   const navigate = useNavigate();
 
+  const closePopup = () => {
+    setCancel(!cancel);
+  };
+
+  const handleResponse = async (email) => {
+    const response = await fetchUserDetails(email);
+    console.log(response);
+    setName(response.data.user["name"]);
+    setRefCodes(response.data.user["referral_code"]);
+    setRefNo(response.data["total_referred_users"]);
+  };
+
   const fetchFromLS = (user) => {
     try {
       const data = localStorage.getItem(user);
@@ -31,18 +43,6 @@ const Dashboard = () => {
       console.error("Error fetching data from localStorage:", error);
       console.error("User must login or register");
     }
-  };
-
-  const closePopup = () => {
-    setCancel(!cancel);
-  };
-
-  const handleResponse = async (email) => {
-    const response = await fetchUserDetails(email);
-    console.log(response);
-    setName(response.data.user["name"]);
-    setRefCodes(response.data.user["referral_code"]);
-    setRefNo(response.data["total_referred_users"]);
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const Dashboard = () => {
         </div>
         {cancel ? null : (
           <div className="overlay">
-            <Refinfo onclick={closePopup} refCodes={refCodes}/>
+            <Refinfo onclick={closePopup} refCodes={refCodes} />
           </div>
         )}
       </div>

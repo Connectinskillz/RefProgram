@@ -97,7 +97,7 @@ const Register = () => {
 
       <div className="Reg-body">
         <div className="Reg-head">
-          <h1>Registeration</h1>
+          <h1>Registration</h1>
           <p>Register to be part of the referral program.</p>
         </div>
 

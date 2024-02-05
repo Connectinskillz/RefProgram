@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Inputs from "../Resources/Inputs";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import "./Reg.css";
+import Loader from "../Loader/Loader";
+import { resetPassword } from "../Requests/axiosRequest";
 import Button from "../Resources/Buttons";
 import logo from "../Assets/connectskillz 13.svg";
 
 const Forgot = () => {
   const [showed, setShowed] = useState(false);
+  const [changing, setChanging] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [valid, setValid] = useState(false);
   const [updatePass, setUpdatepass] = useState({
-    newPass: "",
-    confirmPass: "",
+    email: "",
+    token: "",
+    password: "",
+    password_confirmation: "",
   });
 
   const handlePass = (e) => {
@@ -17,11 +24,48 @@ const Forgot = () => {
     var value = e.target.value;
 
     setUpdatepass({ ...updatePass, [name]: value });
+    setChanging(!changing);
     console.log(updatePass);
   };
 
+  const fetchFromLS = (user) => {
+    const data = localStorage.getItem(user);
+    console.log("works");
+    if (data !== null) {
+      setUpdatepass({ ...updatePass, email: data });
+      console.log("data");
+    }
+  };
+
+  useEffect(() => {
+    if (
+      updatePass["password"].length > 0 &&
+      updatePass["password_confirmation"].length > 0 &&
+      updatePass["password"] === updatePass["password_confirmation"]
+    ) {
+      setValid(true);
+      console.log("matched");
+    }
+  }, [changing]);
+
   const handleShow = (e) => {
     setShowed(!showed);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(updatePass);
+    if (valid) {
+      setLoading(true);
+      await resetPassword(updatePass);
+      // setUpdatepass({
+      //   email: "",
+      //   token: "",
+      //   password: "",
+      //   password_confirmation: "",
+      // });
+      setLoading(false);
+    }
   };
 
   return (
@@ -34,13 +78,13 @@ const Forgot = () => {
           <h1>Reset your Password?</h1>
         </div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <Inputs
             classed="in-put"
             type={showed ? "text" : "password"}
             placeholder="Enter New Password"
-            name="newPass"
-            value={updatePass["newPass"]}
+            name="password"
+            value={updatePass["password"]}
             handlechange={handlePass}
           />
 
@@ -48,8 +92,8 @@ const Forgot = () => {
             classed="in-put"
             type={showed ? "text" : "password"}
             placeholder="Confirm Password"
-            name="confirmPass"
-            value={updatePass["confirmPass"]}
+            name="password_confirmation"
+            value={updatePass["password_confirmation"]}
             handlechange={handlePass}
           />
 
@@ -67,7 +111,7 @@ const Forgot = () => {
             )}
           </div>
 
-          <Button name="Reset" classed="btn-01" />
+          <Button name={loading ? <Loader /> : "Reset"} classed="btn-01" />
         </form>
       </div>
     </div>

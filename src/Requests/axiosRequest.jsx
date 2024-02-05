@@ -3,13 +3,13 @@ import axios from "axios";
 const base_URL = "https://backend.connectinskillz.com/api";
 
 export const fetchUserDetails = async (email) => {
-    let result
+  let result;
   await axios
     .get(`${base_URL}/fetch_user_details/${email}`)
     .then((response) => {
       if (response.status === 200) {
         console.log(response.data);
-        result = response.data
+        result = response.data;
       }
     })
     .catch((err) => {
@@ -55,15 +55,28 @@ export const userLogin = async (loginInfo, navigate) => {
 };
 
 export const forgotPassword = async (email) => {
-    const data = {email}
-    await axios
-      .post(`${base_URL}/forgot-password`, data)
-      .then((response) => {
-        console.log(response);        
-      })
-      .catch((err) => {
-        if (err.response.data.message) {
-          console.log(err.response);
-        }
-      });
-  };
+  const data = { email };
+  await axios
+    .post(`${base_URL}/forgot-password`, data)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      if (err.response.data.message) {
+        console.log(err.response);
+      }
+    });
+};
+
+export const resetPassword = async (updatePass) => {
+  await axios
+    .post(`${base_URL}/password/reset-password`, updatePass)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      if (err.response.data.message) {
+        console.log(err.response);
+      }
+    });
+};
