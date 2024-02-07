@@ -6,6 +6,7 @@
 }
 .error {
   color: red;
+  padding: 5px 0px;
   font-size: 11px;
 }
 
@@ -159,6 +160,10 @@
 
 .ptp-body h4 {
   color: #004aad;
+}
+
+.btn{
+  width: 100%;
 }
 @media screen and (max-width: 425px) {
   .cent {

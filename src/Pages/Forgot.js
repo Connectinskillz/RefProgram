@@ -46,6 +46,9 @@ const Forgot = () => {
       setValid(true);
       console.log("matched");
     }
+    else{
+      setValid(false);
+    }
   }, [changing]);
 
   const handleShow = (e) => {
@@ -56,6 +59,7 @@ const Forgot = () => {
     e.preventDefault();
     console.log(updatePass);
     if (valid) {
+      fetchFromLS("userEmail")
       setLoading(true);
       await resetPassword(updatePass);
       // setUpdatepass({
@@ -110,8 +114,12 @@ const Forgot = () => {
               </div>
             )}
           </div>
-
-          <Button name={loading ? <Loader /> : "Reset"} classed="btn-01" />
+          <Button
+            name={loading ? <Loader /> : "Reset"}
+            id={valid ? "enable" : "disable"}
+            classed="btn"
+          />
+          {/* <Button name={loading ? <Loader /> : "Reset"} classed="btn-01" /> */}
         </form>
       </div>
     </div>

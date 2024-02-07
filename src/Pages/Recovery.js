@@ -22,6 +22,7 @@ const Recovery = () => {
   };
 
   const handleEmail = async (e) => {
+    e.preventDefault()
     if (valid) {
       e.preventDefault();
       setLoading(true);
@@ -42,6 +43,8 @@ const Recovery = () => {
     if (email.length > 0 && MAIL_REGEX.test(email)) {
       console.log("valid");
       setValid(true);
+    }else{
+      setValid(false)
     }
   }, [prompt, changing]);
 
@@ -67,8 +70,12 @@ const Recovery = () => {
             handlechange={handleEntry}
             inputref={recoveryRef}
           />
-          <div className="ct-btn">
-            <Button name={loading ? <Loader /> : "submit"} />
+          <div className="ct-btn">            
+            <Button
+            name={loading ? <Loader /> : "submit"}
+            id={valid ? "enable" : "disable"}
+            classed="btn"
+          />
           </div>
         </form>
       </div>

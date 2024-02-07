@@ -15,7 +15,7 @@ const MAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 const Login = () => {
   // useref to track to add focus to the email field
   const mailRef = useRef();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const [changing, setChanging] = useState(false);
   const [validation, setvalidation] = useState(false);
   // const [error, setError] = useState("")
@@ -47,15 +47,18 @@ const Login = () => {
       setvalidation(true);
       console.log("true email");
     }
+    else{
+      setvalidation(false)
+    }
   }, [changing]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(loginInfo);
     if (validation) {
-      setLoading(true)
+      setLoading(true);
       await userLogin(loginInfo, navigate);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -102,7 +105,11 @@ const Login = () => {
               <Link to="/Recovery">Forgot your Password?</Link>
             </p>
           </div>
-          <Button name={loading ? <Loader/> : "Login"} />
+          <Button
+            name={loading ? <Loader /> : "Login"}
+            id={validation ? "enable" : "disable"}
+            classed="btn"
+          />
         </form>
         <div className="registered">
           <p>New here?</p>

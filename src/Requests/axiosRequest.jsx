@@ -22,7 +22,7 @@ export const fetchUserDetails = async (email) => {
 
 export const refferalRegister = async (readInput, Navigate) => {
   await axios
-    .post(`${base_URL}/referral_pg_reg`, readInput)
+    .post(`${base_URL}/referral_pg_reg`, readInput, { withCredentials: true })
     .then((response) => {
       console.log(response);
       if (response.status === 200) {

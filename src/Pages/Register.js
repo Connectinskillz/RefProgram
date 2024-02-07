@@ -19,20 +19,21 @@ const Register = () => {
   const [valid, setValid] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
   const [changing, setChanging] = useState(false);
-  const [country, setCountry] = useState("");
   const Navigate = useNavigate();
   // to view password
   const [check, setCheck] = useState(false);
   // state management for input fields
   const [readInput, setReadInput] = useState({
     name: "",
-    phone_number: "",
     email: "",
+    phone_number: "",
+    country: "",    
     password: "",
     confirmpassword: "",
   });
 
   const [countryOptions, setCountryOptions] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("*All fields are required");
 
   useEffect(() => {
     let options = [];
@@ -61,6 +62,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid) {
+      console.log(readInput)
       setLoading(true);
       await refferalRegister(readInput, Navigate);
       setLoading(false);
@@ -69,25 +71,41 @@ const Register = () => {
 
   useEffect(() => {
     if (
+      readInput["password"].length > 0 &&
+      readInput["password"] !== readInput["confirmpassword"]
+    ) {
+      setErrorMessage("*password does not match");
+    } else if (
+      readInput["password"].length < 8 &&
+      readInput["password"].length > 0 &&
+      readInput["password"] === readInput["confirmpassword"]
+    ) {
+      setErrorMessage("password must be at least 8 characters long");
+    }
+
+    if (
       readInput["name"] &&
       readInput["phone_number"] &&
       validEmail &&
       readInput["password"].length >= 8 &&
       readInput["password"] === readInput["confirmpassword"] &&
-      country.length > 0 &&
-      country !== "Select your country"
+      readInput["country"] &&
+      readInput["country"] !== "Select your country"
     ) {
+      setErrorMessage("");
       setValid(true);
       console.log("valid");
-    } else {
+    } else {      
       setValid(false);
     }
 
-    if (MAIL_REGEX.test(readInput["email"])) {
+    if (readInput["email"] && MAIL_REGEX.test(readInput["email"])) {
       setValidEmail(true);
-      console.log("true email");
+    } else if (readInput.email && !MAIL_REGEX.test(readInput["email"])) {
+      setValidEmail(false);
+      setErrorMessage("*invalid email format");
     }
-  }, [changing]);
+  }, [changing, validEmail]);
 
   return (
     <div className="register">
@@ -120,10 +138,12 @@ const Register = () => {
             handlechange={handleChange}
           />
 
-          <select className="in-put" id="select" onChange={(e)=>{
-            setCountry(e.target.value)
-            setChanging(!changing)
-          }}>
+          <select
+            className="in-put"
+            id="select"
+            name="country"
+            onChange={handleChange}
+          >
             <option> Select your country</option>
             {countryOptions.map((item) => {
               return <option>{item.country}</option>;
@@ -172,8 +192,12 @@ const Register = () => {
               )}
             </div>
           </IconContext.Provider>
-
-          <Button name={loading ? <Loader /> : "Register"} />
+          <p className="error">{errorMessage}</p>
+          <Button
+            name={loading ? <Loader /> : "Register"}
+            id={valid ? "enable" : "disable"}
+            classed="btn"
+          />
         </form>
 
         <div className="registered">
