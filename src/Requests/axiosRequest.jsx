@@ -1,4 +1,5 @@
 import axios from "axios";
+import { notify, notifyError } from "./toastify";
 
 const base_URL = "https://backend.connectinskillz.com/api";
 
@@ -22,7 +23,7 @@ export const fetchUserDetails = async (email) => {
 
 export const refferalRegister = async (readInput, Navigate) => {
   await axios
-    .post(`${base_URL}/referral_pg_reg`, readInput, { withCredentials: true })
+    .post(`${base_URL}/referral_pg_reg`, readInput)
     .then((response) => {
       console.log(response);
       if (response.status === 200) {
@@ -31,8 +32,9 @@ export const refferalRegister = async (readInput, Navigate) => {
       }
     })
     .catch((err) => {
-      if (err.response.data.message) {
-        console.log(err.response.data.message);
+      if (err) {
+        notifyError(err.message)      
+        console.log(err);
       }
     });
 };
@@ -48,8 +50,9 @@ export const userLogin = async (loginInfo, navigate) => {
       }
     })
     .catch((err) => {
-      if (err.response.data.message) {
-        console.log(err.response);
+      if (err) {
+        notifyError(err.message)
+        console.log(err);
       }
     });
 };
@@ -62,8 +65,9 @@ export const forgotPassword = async (email) => {
       console.log(response);
     })
     .catch((err) => {
-      if (err.response.data.message) {
-        console.log(err.response);
+      if (err) {
+        notifyError(err.message)
+        console.log(err);
       }
     });
 };
@@ -75,8 +79,8 @@ export const resetPassword = async (updatePass) => {
       console.log(response);
     })
     .catch((err) => {
-      if (err.response.data.message) {
-        console.log(err.response);
+      if (err.message) {
+        console.log(err);
       }
     });
 };

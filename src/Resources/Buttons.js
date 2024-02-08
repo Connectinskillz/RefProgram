@@ -4,7 +4,7 @@ import "./button.css";
 const Button = ({
   name,
   ondisplay,
-  id = "enable",  
+  id,  
   classed,
 }) => {
   return (
