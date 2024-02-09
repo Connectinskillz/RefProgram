@@ -3,10 +3,23 @@ import { notify, notifyError } from "./toastify";
 
 const base_URL = "https://backend.connectinskillz.com/api";
 
+const setConfig = (accessToken) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+  };
+
+  return config;
+};
+
 export const fetchUserDetails = async (email) => {
   let result;
+  let token = localStorage.getItem("token");
   await axios
-    .get(`${base_URL}/fetch_user_details/${email}`)
+    .get(`${base_URL}/fetch_user_details/${email}`, setConfig(token))
     .then((response) => {
       if (response.status === 200) {
         console.log(response.data);
@@ -28,6 +41,7 @@ export const refferalRegister = async (readInput, Navigate) => {
       console.log(response);
       if (response.status === 200) {
         localStorage.setItem("userEmail", readInput.email);
+        localStorage.setItem("token", response.data.api_token);
         Navigate("/Dashboard");
       }
     })
@@ -46,6 +60,7 @@ export const userLogin = async (loginInfo, navigate) => {
       console.log(response);
       if (response.status === 200) {
         localStorage.setItem("userEmail", loginInfo.email);
+        localStorage.setItem("token", response.data.api_token);
         navigate("/Dashboard");
       }
     })
