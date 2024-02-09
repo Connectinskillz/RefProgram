@@ -27,7 +27,7 @@ const Register = () => {
     name: "",
     email: "",
     phone_number: "",
-    country: "",    
+    country: "",
     password: "",
     confirmpassword: "",
   });
@@ -62,7 +62,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (valid) {
-      console.log(readInput)
+      console.log(readInput);
       setLoading(true);
       await refferalRegister(readInput, Navigate);
       setLoading(false);
@@ -81,6 +81,8 @@ const Register = () => {
       readInput["password"] === readInput["confirmpassword"]
     ) {
       setErrorMessage("password must be at least 8 characters long");
+    } else {
+      setErrorMessage("Matched!");
     }
 
     if (
@@ -95,7 +97,7 @@ const Register = () => {
       setErrorMessage("");
       setValid(true);
       console.log("valid");
-    } else {      
+    } else {
       setValid(false);
     }
 

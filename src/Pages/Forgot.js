@@ -13,7 +13,7 @@ const Forgot = () => {
   const [loading, setLoading] = useState(false);
   const [valid, setValid] = useState(false);
   const [updatePass, setUpdatepass] = useState({
-    email: "",
+    email: "ridwanfola@gmail.com",
     token: "",
     password: "",
     password_confirmation: "",
@@ -25,7 +25,6 @@ const Forgot = () => {
 
     setUpdatepass({ ...updatePass, [name]: value });
     setChanging(!changing);
-    console.log(updatePass);
   };
 
   const fetchFromLS = (user) => {
@@ -37,6 +36,18 @@ const Forgot = () => {
     }
   };
 
+  const getResetToken = () => {
+    const currentPath = window.location.pathname;
+    const parts = currentPath.split("/"); // Split the URL by "/"
+    const token = parts[2];
+    console.log(token)
+    setUpdatepass({ ...updatePass, token: token });
+  };
+
+  useEffect(() => {
+    getResetToken();
+  }, []);
+
   useEffect(() => {
     if (
       updatePass["password"].length > 0 &&
@@ -45,8 +56,7 @@ const Forgot = () => {
     ) {
       setValid(true);
       console.log("matched");
-    }
-    else{
+    } else {
       setValid(false);
     }
   }, [changing]);
@@ -59,7 +69,7 @@ const Forgot = () => {
     e.preventDefault();
     console.log(updatePass);
     if (valid) {
-      fetchFromLS("userEmail")
+      fetchFromLS("userEmail");
       setLoading(true);
       await resetPassword(updatePass);
       // setUpdatepass({

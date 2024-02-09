@@ -9,14 +9,10 @@ import { fetchUserDetails } from "../Requests/axiosRequest";
 import "./dash.css";
 
 const Dashboard = () => {
-  // State to manage User's fetched data
-  const [name, setName] = useState("");
-  const [refCodes, setRefCodes] = useState("");
-  const [refNo, setRefNo] = useState("");
-  // const [email, setEmail] = useState("");
+  // State to manage User's fetched data  
+  const [userDetails, setUserDetails] = useState([]);  
 
-  const [cancel, setCancel] = useState(false);
-  // const [ref, setRef] = useState()
+  const [cancel, setCancel] = useState(false);  
 
   const navigate = useNavigate();
 
@@ -27,9 +23,7 @@ const Dashboard = () => {
   const handleResponse = async (email) => {
     const response = await fetchUserDetails(email);
     console.log(response);
-    setName(response.data.user["name"]);
-    setRefCodes(response.data.user["referral_code"]);
-    setRefNo(response.data["total_referred_users"]);
+    setUserDetails(response.data.user);    
   };
 
   const fetchFromLS = (user) => {
@@ -53,14 +47,20 @@ const Dashboard = () => {
     <>
       <div className="Dashboard">
         <Header />
-        <Banner onDisp={closePopup} userName={name} />
+        <Banner onDisp={closePopup} userName={userDetails?.name} />
         <div className="infosec">
-          <RefCode refcodes={refCodes} />
-          <Payref refNo={refNo} />
+          <RefCode refcodes={userDetails?.referral_code} />
+          <Payref
+            userDetails={userDetails}
+            refNo={userDetails?.total_referred_users}
+          />
         </div>
         {cancel ? null : (
           <div className="overlay">
-            <Refinfo onclick={closePopup} refCodes={refCodes} />
+            <Refinfo
+              onclick={closePopup}
+              refCodes={userDetails?.referral_code}
+            />
           </div>
         )}
       </div>

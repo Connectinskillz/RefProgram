@@ -33,7 +33,7 @@ export const refferalRegister = async (readInput, Navigate) => {
     })
     .catch((err) => {
       if (err) {
-        notifyError(err.message)      
+        notifyError(err.message);
         console.log(err);
       }
     });
@@ -51,7 +51,7 @@ export const userLogin = async (loginInfo, navigate) => {
     })
     .catch((err) => {
       if (err) {
-        notifyError(err.message)
+        notifyError(err.message);
         console.log(err);
       }
     });
@@ -66,7 +66,7 @@ export const forgotPassword = async (email) => {
     })
     .catch((err) => {
       if (err) {
-        notifyError(err.message)
+        notifyError(err.message);
         console.log(err);
       }
     });
@@ -77,6 +77,7 @@ export const resetPassword = async (updatePass) => {
     .post(`${base_URL}/password/reset-password`, updatePass)
     .then((response) => {
       console.log(response);
+      window.location.pathname = "/login";
     })
     .catch((err) => {
       if (err.message) {
