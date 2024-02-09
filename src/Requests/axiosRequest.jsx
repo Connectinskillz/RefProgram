@@ -19,7 +19,7 @@ export const fetchUserDetails = async (email) => {
   let result;
   let token = localStorage.getItem("token");
   await axios
-    .get(`${base_URL}/fetch_user_details/${email}`, setConfig(token))
+    .get(`${base_URL}/fetch_user_details/${email}`)
     .then((response) => {
       if (response.status === 200) {
         console.log(response.data);
