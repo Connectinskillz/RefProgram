@@ -81,9 +81,7 @@ const Register = () => {
       readInput["password"] === readInput["confirmpassword"]
     ) {
       setErrorMessage("password must be at least 8 characters long");
-    } else {
-      setErrorMessage("Matched!");
-    }
+    } 
 
     if (
       readInput["name"] &&
@@ -103,6 +101,7 @@ const Register = () => {
 
     if (readInput["email"] && MAIL_REGEX.test(readInput["email"])) {
       setValidEmail(true);
+      setErrorMessage("email is valid");
     } else if (readInput.email && !MAIL_REGEX.test(readInput["email"])) {
       setValidEmail(false);
       setErrorMessage("*invalid email format");
