@@ -203,7 +203,7 @@ const Register = () => {
 
         <div className="registered">
           <p>Already Registered?</p>
-          <Link to="./Login">signin</Link>
+          <Link to="/login">signin</Link>
         </div>
       </div>
     </div>

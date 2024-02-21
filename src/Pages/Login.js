@@ -102,7 +102,7 @@ const Login = () => {
           </div>
           <div className="forg">
             <p className="forgot">
-              <Link to="/Recovery">Forgot your Password?</Link>
+              <Link to="/recovery">Forgot your Password?</Link>
             </p>
           </div>
           <Button
