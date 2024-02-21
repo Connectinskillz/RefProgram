@@ -104,7 +104,7 @@ const Register = () => {
       setErrorMessage("email is valid");
     } else if (readInput.email && !MAIL_REGEX.test(readInput["email"])) {
       setValidEmail(false);
-      setErrorMessage("*invalid email format");
+      setErrorMessage("*invalid email format!");
     }
   }, [changing, validEmail]);
 
