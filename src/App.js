@@ -8,17 +8,16 @@ import Forgot from "./Pages/Forgot";
 import Recovery from "./Pages/Recovery";
 
 function App() {
-  
   return (
-    <div className="App">
-        <Routes>
-          <Route path="/" element={<Register />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/forgot/:id" element={<Forgot />} />
-          <Route exact path="/recovery" element={<Recovery />} />
-          <Route exact path="/Dashboard" element={<Dashboard />} />
-        </Routes>      
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/forgot/:id" element={<Forgot />} />
+        <Route exact path="/recovery" element={<Recovery />} />
+        <Route exact path="/Dashboard" element={<Dashboard />} />
+      </Routes>
+    </>
   );
 }
 

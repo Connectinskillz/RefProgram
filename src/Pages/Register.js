@@ -69,7 +69,31 @@ const Register = () => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {  
+    if (
+      readInput["name"] &&
+      readInput["phone_number"] &&
+      validEmail &&
+      readInput["password"].length >= 8 &&
+      readInput["password"] === readInput["confirmpassword"] &&
+      readInput["country"] &&
+      readInput["country"] !== "Select your country"
+    ) {      
+      setValid(true);
+      setErrorMessage("");
+      console.log("valid");
+    } else {
+      setValid(false);
+    }
+
+    if (readInput["email"] && MAIL_REGEX.test(readInput["email"])) {
+      setValidEmail(true);
+      setErrorMessage("");
+    } else if (readInput.email && !MAIL_REGEX.test(readInput["email"])) {
+      setValidEmail(false);
+      setErrorMessage("*invalid email format");
+    }
+    
     if (
       readInput["password"].length > 0 &&
       readInput["password"] !== readInput["confirmpassword"]
@@ -83,29 +107,6 @@ const Register = () => {
       setErrorMessage("password must be at least 8 characters long");
     } 
 
-    if (
-      readInput["name"] &&
-      readInput["phone_number"] &&
-      validEmail &&
-      readInput["password"].length >= 8 &&
-      readInput["password"] === readInput["confirmpassword"] &&
-      readInput["country"] &&
-      readInput["country"] !== "Select your country"
-    ) {
-      setErrorMessage("");
-      setValid(true);
-      console.log("valid");
-    } else {
-      setValid(false);
-    }
-
-    if (readInput["email"] && MAIL_REGEX.test(readInput["email"])) {
-      setValidEmail(true);
-      setErrorMessage("email is valid");
-    } else if (readInput.email && !MAIL_REGEX.test(readInput["email"])) {
-      setValidEmail(false);
-      setErrorMessage("*invalid email format");
-    }
   }, [changing, validEmail]);
 
   return (
