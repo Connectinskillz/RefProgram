@@ -5,11 +5,13 @@ import Login from "./Pages/Login";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard";
 import Forgot from "./Pages/Forgot";
+import { ToastContainer } from "react-toastify";
 import Recovery from "./Pages/Recovery";
 
 function App() {
   return (
     <>
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Register />} />
         <Route exact path="/login" element={<Login />} />

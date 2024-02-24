@@ -66,7 +66,7 @@ export const userLogin = async (loginInfo, navigate) => {
     })
     .catch((err) => {
       if (err) {
-        notifyError(err.message);
+        notifyError(err.response.data.message);
         console.log(err);
       }
     });
