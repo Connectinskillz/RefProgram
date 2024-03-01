@@ -13,7 +13,7 @@ const Forgot = () => {
   const [loading, setLoading] = useState(false);
   const [valid, setValid] = useState(false);
   const [updatePass, setUpdatepass] = useState({
-    email: "ridwanfola@gmail.com",
+    email: "",
     token: "",
     password: "",
     password_confirmation: "",
@@ -40,7 +40,7 @@ const Forgot = () => {
     const currentPath = window.location.pathname;
     const parts = currentPath.split("/"); // Split the URL by "/"
     const token = parts[2];
-    console.log(token)
+    console.log(token);
     setUpdatepass({ ...updatePass, token: token });
   };
 
@@ -72,12 +72,6 @@ const Forgot = () => {
       fetchFromLS("userEmail");
       setLoading(true);
       await resetPassword(updatePass);
-      // setUpdatepass({
-      //   email: "",
-      //   token: "",
-      //   password: "",
-      //   password_confirmation: "",
-      // });
       setLoading(false);
     }
   };
