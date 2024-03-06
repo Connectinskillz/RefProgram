@@ -92,7 +92,7 @@ export const resetPassword = async (updatePass) => {
     .post(`${base_URL}/password/reset-password`, updatePass)
     .then((response) => {
       console.log(response);
-      window.location.pathname = "/login";
+      window.location.pathname = "/login"; 
     })
     .catch((err) => {
       if (err.message) {
